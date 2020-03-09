@@ -39,9 +39,4 @@ For this assignment, write code that will create a table dynamically based upon 
   4. `country`
   5. `shape`
 
-- - -
-
-### Dataset
-
-* [UFO Sightings Data](StarterCode/static/js/data.js)
 
