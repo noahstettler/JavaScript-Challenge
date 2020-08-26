@@ -1,35 +1,34 @@
-// from data.js
-const tableData = data;
+const tableData = data
+const filters = {}
 
-// YOUR CODE HERE!
-
-// Assign the data from `data.js` to a descriptive variable
-const button = d3.select("#filter-btn");
-const tbody = d3.select("tbody")
-
-
-const handler = function () {
-    console.log(`handler called`)
-    let datetime = d3.select("#datetime").property("value")
-    console.log(datetime)
-    
-    // Use the form input to filter by date and time
-    let filterData = data.filter(e => e.datetime === datetime)
-    filterData.forEach(e => {
-      console.log(e)
-      let row = tbody.append("tr")
-      row.append("td").text(e.datetime)
-      row.append("td").text(e.city)
-      row.append("td").text(e.state)
-      row.append("td").text(e.country)
-      row.append("td").text(e.shape)
-      row.append("td").text(e.durationMinutes)
-      row.append("td").text(e.comment)
+function buildTable() {
+    const tbody = d3.select('tbody')
+    tbody.html('')
+    data.forEach(dataRow => {
+        const elements = tbody.append('tr')
+        Object.values(dataRow).forEach(value => tbody.append('td').text(value))
     })
-  }
-  
-  // Complete the click handler for the form
-  button.on("click", handler)
-  
-  // buggy: makes change, but then refreshed it
-  //input.on("change", handler)
+}
+
+function updateFilters() {
+    const changedElement = d3.select(this).select("input");
+    const elementValue = changedElement.property("value");
+    const filterId = changedElement.attr("id");
+
+    elementValue ? filters[filterId] = elementValue : delete filters[filterId]
+
+    filterTable()
+}
+
+function filterTable() {
+    let filteredData = tableData
+
+    Object.entries(filters).forEach(([key, value]) => {
+        filteredData = filteredData.filter(row => row[key] === value)
+    })
+
+    buildTable(filteredData)
+}
+
+d3.selectAll('.filter').on('change', updateFilters)
+buildTable()
