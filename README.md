@@ -1,5 +1,5 @@
 # JavaScript-Challenge
-This Project focuses on data visulaiztion using HTML and JavaScript. The data being used is centered around UFO sightings. **UFO-level-1** appends a data table to the website organized using the following columns: `date/time`, `city`, `state`, `country`, `shape`, and `comment`. Each sighting is searched by date/time. **UFO-level-2** allows the user to search for sightings using and of the abow columns as inputs.
+This Project focuses on data visulaiztion using HTML and JavaScript. The data being used is centered around UFO sightings. **UFO-level-1** appends a data table to the website organized using the following columns: `date/time`, `city`, `state`, `country`, `shape`, and `comment`. Each sighting is searched by date/time. **UFO-level-2** allows the user to search for sightings using any of the abow columns as inputs.
 
 ## Installation
 
